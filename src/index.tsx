@@ -1,6 +1,7 @@
 import * as esbuild from 'esbuild-wasm';
 import { useState, useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
+import CodeEditor from './components/code-editor';
 import { fetchPlugin } from './plugins/fetch-plugin';
 import { unpkgPathPlugin } from './plugins/unpkg-path-plugin';
 
@@ -68,13 +69,22 @@ const App = () => {
     </html>
   `;
 
-  return <div>
-    <textarea value={input} onChange={e => setInput(e.target.value)}></textarea>
+  return (
+  <div>
+    <CodeEditor
+      initialValue="const a = 1"
+      onChange={(value) => setInput(value)}
+    />
+    <textarea
+      value={input}
+      onChange={e => setInput(e.target.value)}
+      ></textarea>
     <div>
       <button onClick={onClick}>Submit</button>
     </div>
     <iframe title="Preview" ref={iframe} sandbox="allow-scripts" srcDoc={html}/>
   </div>
+  );
 };
 
 ReactDOM.render(<App />, document.querySelector("#root"));
