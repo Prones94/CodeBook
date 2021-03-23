@@ -43,6 +43,11 @@ const App = () => {
     console.log(result)
 
     setCode(result.outputFiles[0].text);
+    // try {
+    //   eval(result.outputFiles[0].text);
+    // } catch (err) {
+    //   alert(err);
+    // }
   }
 
   return <div>
@@ -51,6 +56,7 @@ const App = () => {
       <button onClick={onClick}>Submit</button>
     </div>
     <pre>{code}</pre>
+    <iframe title="User Input" src="/test.html" ></iframe>
   </div>
 };
 
