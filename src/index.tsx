@@ -49,6 +49,9 @@ const App = () => {
     //   alert(err);
     // }
   }
+  const html = `
+  <script>${code}</script>
+`
 
   return <div>
     <textarea value={input} onChange={e => setInput(e.target.value)}></textarea>
@@ -56,7 +59,7 @@ const App = () => {
       <button onClick={onClick}>Submit</button>
     </div>
     <pre>{code}</pre>
-    <iframe title="User Input" src="/test.html" ></iframe>
+    <iframe title="User Input" sandbox="allow-scripts" srcDoc={html}/>
   </div>
 };
 
