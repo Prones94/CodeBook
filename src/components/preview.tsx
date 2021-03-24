@@ -3,6 +3,7 @@ import './css/preview.css'
 
 interface PreviewProps {
   code: string;
+  bundleStatus: string;
 };
 
 const html = `
@@ -38,7 +39,7 @@ const html = `
   `;
 
 
-const Preview: React.FC<PreviewProps> = ({ code }) => {
+const Preview: React.FC<PreviewProps> = ({ code, bundleStatus }) => {
   const iframe= useRef<any>();
 
   useEffect(() => {
@@ -46,7 +47,10 @@ const Preview: React.FC<PreviewProps> = ({ code }) => {
     setTimeout(() => {
       iframe.current.contentWindow.postMessage(code, '*');
     }, 500)
-  }, [code])
+  }, [code]);
+
+
+
   return (
     <div className="preview-wrapper">
       <iframe
@@ -56,6 +60,7 @@ const Preview: React.FC<PreviewProps> = ({ code }) => {
         sandbox="allow-scripts"
         srcDoc={html}
       />
+      {bundleStatus && <div className="preview-bundleStatus">{bundleStatus}</div>}
     </div>
   );
 };
