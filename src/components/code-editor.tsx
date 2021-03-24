@@ -31,7 +31,7 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ onChange, initialValue}) => {
       codeShift,
       monacoEditor
     );
-    
+
     highlighter.highLightOnDidChangeModelContent(
       () => {},
       () => {},
@@ -62,7 +62,7 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ onChange, initialValue}) => {
         language="javascript"
         editorDidMount={onEditorDidMount}
         value= {initialValue}
-        height="500px"
+        height="100%"
         theme="dark"
         options={{
           wordWrap: 'on',
