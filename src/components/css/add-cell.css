@@ -19,6 +19,11 @@
   z-index: -1;
 }
 
+.add-cell:active {
+  opacity: 0 !important;
+  transition: opacity 0s;
+}
+
 .add-cell .add-buttons {
   display: flex;
   justify-content:center;
